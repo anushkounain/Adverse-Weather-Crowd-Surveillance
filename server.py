@@ -57,9 +57,9 @@ pipeline = CrowdSurveillancePipeline(
 async def serve_dashboard(request: Request):
     """Renders the main surveillance control center dashboard."""
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request": request,
+        request=request,
+        name="index.html",
+        context={
             "config": pipeline.config,
             "device": str(pipeline.device)
         }
